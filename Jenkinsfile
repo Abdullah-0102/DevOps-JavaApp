@@ -8,11 +8,16 @@ pipeline {
             }
         }
 
+	stage('Compile Java Code') {
+	    steps {
+       		sh 'javac Main.java'
+    	    }
+	}
+
+
         stage('Build Docker Image') {
             steps {
-                sh '''
-                docker build -t abdullah2204/java-app .
-                '''
+                sh 'docker build --no-cache -t abdullah2204/java-app .'
             }
         }
 
